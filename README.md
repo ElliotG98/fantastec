@@ -1,3 +1,52 @@
+# Plan
+
+* Add a dockerfile to the project
+* setup a Docker database
+* Use express and nodmon for the server setup.
+* Create an API folder
+* Create a POST route /getFeatureFlag
+* Validate the payload (valid email and location given)
+* Get the database connection
+* Query the database to see if the email has previously had features enabled if results returned return the features
+* map through the feature flag objects the result being an array of enabled features which we filter out null values using .filter(boolean)
+* Check if the email is in enabledEmails, if it is return (within the map) the feature else continue
+* Check if the location is included or the array blank, continue else return null (within the map)
+* Create a ratio function which accepts the ratio for the feature and returns a boolean from Math.random() < ratio;
+* if the result from the ratio function is true return the feature else return null
+* Add to the database the email and enabled/disabled features
+* return the enabled features array
+
+* Create tests for the following: options (expected return value)
+    * blank payload (400 - invalid request)
+    * invalid email (400 - invalid request)
+    * invalid location (400 - invalid request)
+    * invalid email and location (400 - invalid request)
+    * invalid request body data type (400 - invalid request)
+    * existing user with enabled features (200 - array of enabled features)
+    * existing user with no enabled features (200 - array of enabled features)
+    * existing user with all enabled features (200 - array of enabled features)
+    * new user with excluded country (200 - array of enabled features)
+    * new user with blank included country array (200 - array of enabled features)
+    * new user with country not in either included or excluded (200 - array of enabled features)
+    * new user with included country (200 - array of enabled features)
+    * new user with enabled email for a feature (200 - array of enabled features)
+    * new user with 50/50 ratio (200 - array of enabled features)
+    * new user with 90/10 ratio (200 - array of enabled features)
+
+
+# Assumptions
+
+* The api will be called with only 1 user's info (email, location)
+* The api's requesting payload must contain a valid email and location otherwise a 400 error is returned
+* The returned response will be an array of enabled features:strings
+* The overall ratio will not be an exact split e.g., 50/50
+* If the user's location changes but has previously been accepted then they will still receive the same features even if a feature is disabled for that location
+
+
+
+
+
+
 # Feature flag test
 
 Your task is to create a simple feature flag API. A feature flag is, according to Wikipedia:
