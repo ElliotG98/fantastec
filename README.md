@@ -3,7 +3,6 @@
 * Add a dockerfile to the project
 * setup a Docker database
 * Use express and nodmon for the server setup.
-* Create an API folder
 * Create a POST route /getFeatureFlag
 * Validate the payload (valid email and location given)
 * Get the database connection
