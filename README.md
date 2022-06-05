@@ -7,6 +7,11 @@
 * Ensure that the docker containers are running
 * Open a REST API client e.b., Insomnia/Postman and POST to http://localhost:6868/getFeatureFlag with the payload {"user":"email=test@test.com&location=US"}
 
+# What I could do better with more time
+* Unit tests with a multistage dockerfile 
+* Add API authorisation e.g., bearer token
+* Move over to AWS lambdas for scalability
+
 # Plan
 
 * Add a dockerfile to the project
