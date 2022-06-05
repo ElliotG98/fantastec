@@ -1,3 +1,12 @@
+# How to run
+* Clone the project
+* Be sure to have docker installed and ready
+* In your terminal head to the project and run docker compose up
+
+# How to test
+* Ensure that the docker containers are running
+* Open a REST API client e.b., Insomnia/Postman and POST to http://localhost:6868/getFeatureFlag with the payload {"user":"email=test@test.com&location=US"}
+
 # Plan
 
 * Add a dockerfile to the project
@@ -15,7 +24,7 @@
 * Add to the database the email and enabled/disabled features
 * return the enabled features array
 
-* Create tests for the following: options (expected return value)
+* Test the following: option (expected return value)
     * blank payload (400 - invalid request)
     * invalid email (400 - invalid request)
     * invalid location (400 - invalid request)
